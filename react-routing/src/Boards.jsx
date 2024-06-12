@@ -1,8 +1,7 @@
-import { Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Spinner from "./Spinner";
 import useFetch from "./services/useFetch";
 import { useState } from "react";
-import Detail from "./Detail";
 export default function Boards() {
     const [size, setSize] = useState("");
 
@@ -13,11 +12,11 @@ export default function Boards() {
     function renderProduct(p) {
       return (
         <div key={p.id} className="product">
-          <Route to={"/detail"} element={<Detail id={p.id}></Detail>}>
+          <Link  to={`/detail`} state={p}>
             <img src={`/images/${p.image}`} alt={p.name} />
             <h3>{p.name}</h3>
             <p>${p.price}</p>
-          </Route>
+          </Link>
         </div>
       );
     }
